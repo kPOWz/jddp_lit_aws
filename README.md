@@ -15,7 +15,7 @@ Use Collections API in .NET or JAVA or any other language of your choice.
 5) Check the code into GitHub and Share the link
 
 ## Implementation Notes
-
+### 1 - 3
 This implementation satisfies the deliverables by reading the entire novel into memory. The WordFrequencyStreamReader constructor is the biggest expense.
 The `WordFrequencyStreamReader` getter (at its core a formatter)
 
@@ -24,20 +24,13 @@ Following that a `Stream` operator or two would be needed to get "top 50" - perh
 
 Due to the nature of ISG data platform, this implementation also plays with the idea of having the need to limit memory consumption & maps out how these alternatives would be composed. Adding chunks of data (from any or multiple sources) becomes very sustainable after the constructor initialization.
 
-### Results
-In my opinion the best top 50 word from Moby Dick has to be _"ye"_
-
-Full results (i spy two :bug: words related to spaces):
->"[long, man, him,, seemed, her, after, two, them, who, would, than, though, has, still, it,, ye, must, yet, very, old, no, these, been, about, now, its, then, over, most, will, do, upon, their, those, great, my, down, any, me, into, so, , whale, which, if, him, more, only, such, like]"
-
-
-## AWS/Infrastructure Notes
+### 4 - AWS/Infrastructure Notes
 The Moby Dick word frequency counter is deployed as an AWS Lambda.
 Template [`java_basic`](https://github.com/awsdocs/aws-lambda-developer-guide/tree/main/sample-apps/java-basic) was used for this.
 
 It uses Gradle to build a .zip archive that is uploaded to S3. I kept all the sample app's defaults except the Lambda timeout.
 
-Lambda isn't a good fit for this exercise for a few reasons; I was thinking of Lambda only from a time-crunch perspective.
+Lambda works fine for purpose of this exercise, however, for a few reasons I wouldn't actually use it for a function/app of this nature.
 Reasons...
 1) the cost of this code is very much "front loaded" while subsequent calls are set up to be cheap which makes it a bad fit
 2) IMO run time is too long for a Lambda (somewhere around a minute)
@@ -46,3 +39,10 @@ Reasons...
 ### Example Lambda Invoke
 from the project root run `./3-invoke.sh`
 ![Screen shot of top 50 words returned from an AWS Lambda](/sample-apps/java-basic/images/aws-lambda-invoke.png)
+
+### Results
+In my opinion the best top 50 word from Moby Dick has to be _"ye"_
+
+Full results (i spy two :bug: words related to spaces):
+>"[long, man, him,, seemed, her, after, two, them, who, would, than, though, has, still, it,, ye, must, yet, very, old, no, these, been, about, now, its, then, over, most, will, do, upon, their, those, great, my, down, any, me, into, so, , whale, which, if, him, more, only, such, like]"
+
