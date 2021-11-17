@@ -17,7 +17,7 @@ Use Collections API in .NET or JAVA or any other language of your choice.
 ## Implementation Notes
 ### 1 - 3
 This implementation satisfies the deliverables by reading the entire novel into memory. The WordFrequencyStreamReader constructor is the biggest expense.
-The `WordFrequencyStreamReader` getter (at its core a formatter)
+The `WordFrequencyStreamReader` getter does very little and at is core is just a formatter. This makes sense in a scenario where we ask more than once for the top results and/or on an ongoing basis. Depnding on real usage patterns different decisions would be made.
 
 One possible alternative data structure for the basic deliverables is a sorted HashMap like TreeMap with a composite string key that included the count (ex: "the,22").  This would be dependent on the implicit behavior of "natural order" or some type of override of the tree's algo
 Following that a `Stream` operator or two would be needed to get "top 50" - perhaps `limit`
