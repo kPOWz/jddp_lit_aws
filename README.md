@@ -38,7 +38,7 @@ Reasons...
 
 ### Example Lambda Invoke
 from the project root run `./3-invoke.sh`
-![Screen shot of top 50 words returned from an AWS Lambda](/sample-apps/java-basic/images/aws-lambda-invoke.png)
+![Screen shot of top 50 words returned from an AWS Lambda](/images/aws-lambda-invoke.png)
 
 ### Results
 In my opinion the best top 50 word from Moby Dick has to be _"ye"_
